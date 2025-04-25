@@ -1,7 +1,11 @@
-FROM node:18-alpine
-WORKDIR /usr/src/app
-COPY package*.json ./
-RUN npm install --omit=dev --omit=optional --prefer-offline
+FROM node:18-slim
+
+WORKDIR /app
+
 COPY . .
+
+RUN npm install
+
 EXPOSE 8080
-CMD ["node", "server.js"]
+
+CMD ["npm", "start"]
